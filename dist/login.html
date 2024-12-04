@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MW.AI Login</title>
+    <link rel="icon" href="../images/Logo.png">
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <script src="/js/main.js"></script>
+</head>
+
+<body class="font-afacad h-screen bg-gradient-to-b from-gray-950 to-[#52658F]">
+    <header class="header fixed w-full top-[10px] z-[1000]">
+        <div class="container px-[14px]">
+            <div class="header__wrapper lg:h-[100px] md:h-[65px] h-[35px] flex text-[#FAFAFA] justify-between items-center">
+                <div class="header__logo">
+                    <a href="#" class="flex lg:gap-[13px] md:gap-[11px] sm:gap-[9px] gap-[8px] items-center">
+                        <h2 class="lg:text-[58px] md:text-[48px] text-[38px]">M</h2>
+                        <h2 class="lg:text-[29px] md:text-[25px] text-[22px]">MockWise <span class="font-bold">AI</span></h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="sectionlogin">
+        <div class="cardcontent">
+            <h1>Login</h1>
+            <p>Stay updated on your mockup progress</p>
+            <input type="text" id="username" class="inputuser" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <a href="#" class="forgot-password text-xl" onclick="on()">Forgot Password?</a>
+            <button type="button"><a href="/dist/settingspage.html">Log in</a></button>
+            <p class="policy">Don't have an account? <a class="join" href="/dist/signup.html">Join now</a></p>
+        </div>
+    </section>
+
+    <section id="overlay">
+        <div class="floating-form">
+            <h2>Change Password</h2>
+                <div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="text" id="email" placeholder="Email" size="40">
+                    </div>
+                </div>
+            
+            <div class="flex flex-col items-center justify-center">
+                <button class="btn" style="width: 200px;">Request reset link</button> 
+                <br>
+                <button class="btn" style="width: 200px;" onclick="off()">Cancel</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

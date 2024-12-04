@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MW.AI Signup</title>
+    <link rel="icon" href="../images/Logo.png">
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+</head>
+<body class="font-afacad h-screen bg-gradient-to-b from-gray-950 to-[#52658F]">
+    <header class="header fixed w-full top-[10px] z-[1000]">
+        <div class="container px-[14px]">
+            <div class="header__wrapper lg:h-[100px] md:h-[65px] h-[35px] flex text-[#FAFAFA] justify-between items-center">
+                <div class="header__logo">
+                    <a href="./index.html" class="flex lg:gap-[13px] md:gap-[11px] sm:gap-[9px] gap-[8px] items-center">
+                        <h2 class="lg:text-[58px] md:text-[48px] text-[38px]">M</h2>
+                        <h2 class="lg:text-[29px] md:text-[25px] text-[22px]">MockWise <span class="font-bold">AI</span></h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="sectionsignup">
+        <div class="signupcontent">
+            <h1>Create Account</h1>
+            <div class="divide">
+                <div>
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" placeholder="Peter">
+                </div>
+                <div>
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" placeholder="Griffin">
+                </div>
+                </div>
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="hello@mockwise.ai">
+            <label for="user">Username</label>
+            <input type="text" id="user" placeholder="thepetergriffin">
+            <label for="newpass">Password</label>
+            <input type="Password" id="newpass" placeholder="Password">
+
+            <div class="flex flex-col">
+                <label for="industry">Industry</label>
+                <select id="industry" style="width: 460px;">
+                    <option>Accounting</option>
+                    <option>Business Administration</option>
+                    <option>Information Technology</option>
+                    <option>Computer Science</option>
+                    <option>Education</option>
+                    <option>Engineering</option>
+                    <option>Nursing</option>
+                    <option>Psychology</option>
+                </select>
+            </div>
+
+            <button type="button"><a href="/dist/settingspage.html">Sign up</a></button>
+            <p class="policy">By Signing in, you agree to our <a href="/dist/signup.html">Privacy Policy.</a></p>
+        </div>
+    </section>
+
+</body>
+</html>
