@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MockWise.AI</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/output.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="font-afacad bg-[#E8E8E8] flex flex-col xl:h-full h-lvh">
+    <header class="flex justify-center">
+        <div class="container content-center text-[#242424] h-[55px] lg:h-[100px] md:h-[77.5px] px-[15px] max-w-[1230px] duration-500">
+            <nav class="header__wrapper flex justify-between items-center" id="header">
+                <div class="header__logo">
+                    <a href="/" class="flex lg:gap-[10px] md:gap-[11px] sm:gap-[9px] gap-[8px] items-center duration-500">
+                        <img src="{{ url_for('static', filename='/images/Logo.png') }}" alt="logo" class="w-[42px] md:w-[50px] lg:w-[52px] duration-300">
+                        <h2 class="text-[22px] lg:text-[30px] md:text-[25px] hidden md:block duration-500">MockWise AI</h2>
+                    </a>    
+                </div>
+
+                <div class="login__signup flex lg:gap-[26px] md:gap-[16px] gap-[8px] lg:text-[20px]
+                    md:text-[18px] text-[17px] duration-500  ">   
+                    {% if user_data %}
+                        <a href="#">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('login') }}">Login</a>  
+                        <a href="{{ url_for('signup') }}">Sign Up</a>
+                    {% endif %}
+                </div>
+            </nav>
+        </div>
+    </header>   
+
+    <section id="pirvacy_policy" class="pirvacy_policy_contents flex items-center justify-center">
+        <div class="container flex items-baseline justify-center mt-[45px] mb-[130px] lg:max-w-[800px] md:max-w-[450px] max-w-[360px]">
+            <div class="pirvacy__policy__wrapper">
+                <div class="pirvacy__policy__contents flex flex-col justify-center text-[#242424] gap-[16px] md:gap-[20px] lg:gap-[24px]">
+                    <div class="privacy__policy__header w-full flex flex-col justify-center leading-[44px] lg:leading-[55px] items-center duration-300">
+                        <h1 class="lg:text-[56px] md:text-[52] text-[40px] text-center duration-300">
+                            PRIVACY POLICY
+                        </h1>
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">Last Updated: May 6,2025</p>
+                    </div>
+
+                    <div class="introduction flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            1. INTRODUCTION
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            Welcome to MockWise AI. This Privacy Policy explains how we collect, use, and protect your personal information 
+                            when you use our AI-powered job interview simulator. By accessing or using MockWise AI, you agree to this policy.
+                        </p>
+                    </div>
+
+                    <div class="information_we_collect flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            2. INFORMATION WE COLLECT
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            We collect the following data to provide and improve our services:
+                        </p>
+
+                        <ol class="list-[lower-alpha] px-8 lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            <li>Personal Information</li>
+                            <ul class="list-disc px-8 lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                                <li>
+                                    <span class="font-bold">Account Registration</span>: Name, email, username, password, gender, and birthdate.
+                                </li>
+                                <li>
+                                    <span class="font-bold">Interview Sessions</span>: Audio recordings of your responses, selected industry/job role, and session history.
+                                </li>
+                                <li>
+                                    <span class="font-bold">Technical Data</span>: IP address, browser type, device information, and usage patterns.
+                                </li>
+                            </ul>
+    
+                            <li>Non-Personal Information</li>
+                            <p class="lg:text-[22px] px-[14px] md:text-[20px] text-[18px] font-thin duration-300">
+                                Aggregated or anonymized data used for analytics (e.g., average session duration).
+                            </p>
+                        </ol>
+                    </div>
+
+                    <div class="data_usage flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            3. HOW WE USE YOUR DATA
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            Your information helps us:
+                        </p>
+                        <ul class="list-disc px-9 lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            <li>
+                                Deliver personalized interview simulations and feedback.
+                            </li>
+                            <li>
+                                Improve MockWise AI’s features and user experience.
+                            </li>
+                            <li>
+                                Communicate with you (e.g., account updates, password resets).
+                            </li>
+                            <li>
+                                Comply with legal requirements.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="data_sharing flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            4. DATA SHARING
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            We do not sell your data. Limited sharing may occur with:
+                        </p>
+                        <ul class="list-disc px-9 lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            <li>
+                                <span class="font-bold">Service Providers</span>: Trusted vendors (e.g., cloud hosting) bound by confidentiality.
+                            </li>
+                            <li>
+                                <span class="font-bold">Legal Obligations</span>: If required by law or to protect our rights.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="data_security flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            5. DATA SECURITY
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            We use encryption and secure servers to protect your data. However, no system is 100% secure—please safeguard your login credentials.
+                        </p>
+                    </div>
+
+                    <div class="rights flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            6. YOUR RIGHTS
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            You can:
+                        </p>
+                        <ul class="list-disc px-9 lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            <li>
+                                Access, correct, or delete your account data via Settings.
+                            </li>
+                            <li>
+                                Request a copy of your data by contacting support@mockwiseai.com.
+                            </li>
+                            <li>
+                                Delete your account (removes personal data but retains anonymized analytics).
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="cookies flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            7. COOKIES
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            We use cookies for functionality (e.g., session management). Disable them in your browser, but some features may not work.
+                        </p>
+                    </div>
+
+                    <div class="children's_privacy flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            8. CHILDREN'S PRIVACY
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            <i>MockWise AI</i> is not intended for users under *13*. We do not knowingly collect their data.
+                        </p>
+                    </div>
+
+                    <div class="policy_updates flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            9. POLICY UPDATES
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            Changes will be posted here with a new Effective Date. Continued use means you accept the updated policy.
+                        </p>
+                    </div>
+
+                    <div class="contact_us flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            10. CONTACT US
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            Questions? Reach out at:
+                        </p>
+                        <ul class="list-disc px-9 lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            <li>
+                                <span class="font-bold">Email</span>: support@mockwiseai.com
+                            </li>
+                            <li>
+                                <span class="font-bold">Address</span>: Laguna College, San Pablo City, Philippines
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="logo__bg fixed flex justify-center h-lvh w-full z-[-1]">
+        <img src="{{ url_for('static', filename='images/Logo.png') }}" alt="bgimage" class="h-full max-w-[30%] object-contain opacity-[15%]">
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

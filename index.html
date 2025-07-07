@@ -1,0 +1,147 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MockWise.AI</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/output.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .button-black {
+            background-color: #1b1f26 !important;
+            color: white !important;
+        }
+        .button-black:hover {
+            background-color: #2269D4 !important;
+        }
+    </style>
+</head>
+
+<body class="font-afacad bg-[#E8E8E8] flex flex-col h-screen">
+    <header class="flex justify-center">
+        <div class="container content-center text-[#242424] h-[55px] lg:h-[100px] md:h-[77.5px] px-[15px] max-w-[1230px] duration-500">
+            <nav class="header__wrapper flex justify-between items-center" id="header">
+                <div class="header__logo">
+                    <a href="" class="flex lg:gap-[10px] md:gap-[11px] sm:gap-[9px] gap-[8px] items-center duration-500">
+                        <img src="{{ url_for('static', filename='/images/Logo.png') }}" alt="logo" class="w-[42px] md:w-[50px] lg:w-[52px] duration-300">
+                        <h2 class="text-[22px] lg:text-[30px] md:text-[25px] hidden md:block duration-500">MockWise AI</h2>
+                    </a>    
+                </div>
+
+                <div class="login__signup flex lg:gap-[26px] md:gap-[16px] gap-[8px] lg:text-[20px]
+                    md:text-[18px] text-[17px] duration-500  ">   
+                    {% if user_data %}
+                        <a href="#">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('login') }}">Login</a>  
+                        <a href="{{ url_for('signup') }}">Sign Up</a>
+                    {% endif %}
+                </div>
+            </nav>
+        </div>
+    </header>   
+
+    <section id="banner" class="banner flex items-center justify-center h-full">
+        <div class="container flex items-center justify-center mt-[-55px]">
+            <div class="banner__wrapper">
+                <div class="banner__contents items-center text-[#242424] gap-[16px] flex flex-col justify-center">
+                    <h1 class="lg:text-[56px] text-[48px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                        <span class="font-bold">AI</span> Mock Interview<br/>Simulator
+                    </h1>
+                    <p class="lg:text-[25px] md:text-[22px] text-[20px] font-thin duration-300">Level up your interview practice.</p>
+                    <button data-action="login-option" class="button-black lg:text-[22px] md:text-[18px] text-[16px] rounded-[4px]
+                        px-[20px] py-[7px] hover:shadow-2xl duration-300"
+                        id="login-option-btn">Start Mockup Interview
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="loginoption__modal fixed inset-0 flex items-center justify-center hidden duration-300" id="login-option-modal">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+            <h2 class="text-xl font-bold mb-4">Login Option</h2>
+            <form id="login-option-form" class="flex flex-col gap-[20px]">
+                <button data-action="login" id="login" class="button-black lg:text-[20px] md:text-[18px] text-[16px] rounded-[4px]
+                    px-[20px] py-[7px] hover:shadow-2xl duration-300">Login to your account
+                </button>
+                <button data-action="guest-interview" id="guest-interview" class="button-black lg:text-[20px] md:text-[18px] text-[16px] rounded-[4px]
+                    px-[20px] py-[7px] hover:shadow-2xl duration-300">Proceed to interview as guest</button>
+            </form>
+            <button data-action="cls-lgn-opt-mdl-btn" id="cls-lgn-opt-mdl-btn" class="mt-4 text-[#1b1f26] hover:text-[#2269D4] duration-300">Cancel</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MockWise.AI</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/output.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="font-afacad bg-[#E8E8E8] flex flex-col h-screen">
+    <header class="flex justify-center">
+        <div class="container content-center text-[#242424] h-[55px] lg:h-[100px] md:h-[77.5px] px-[15px] max-w-[1230px] duration-500">
+            <nav class="header__wrapper flex justify-between items-center" id="header">
+                <div class="header__logo">
+                    <a href="" class="flex lg:gap-[10px] md:gap-[11px] sm:gap-[9px] gap-[8px] items-center duration-500">
+                        <img src="{{ url_for('static', filename='/images/Logo.png') }}" alt="logo" class="w-[42px] md:w-[50px] lg:w-[52px] duration-300">
+                        <h2 class="text-[22px] lg:text-[30px] md:text-[25px] hidden md:block duration-500">MockWise AI</h2>
+                    </a>    
+                </div>
+
+                <div class="login__signup flex lg:gap-[26px] md:gap-[16px] gap-[8px] lg:text-[20px]
+                    md:text-[18px] text-[17px] duration-500  ">   
+                    {% if user_data %}
+                        <a href="#">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('login') }}">Login</a>  
+                        <a href="{{ url_for('signup') }}">Sign Up</a>
+                    {% endif %}
+                </div>
+            </nav>
+        </div>
+    </header>   
+
+    <section id="banner" class="banner flex items-center justify-center h-full">
+        <div class="container flex items-center justify-center mt-[-55px]">
+            <div class="banner__wrapper">
+                <div class="banner__contents items-center text-[#242424] gap-[16px] flex flex-col justify-center">
+                    <h1 class="lg:text-[56px] text-[48px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                        <span class="font-bold">AI</span> Mock Interview<br/>Simulator
+                    </h1>
+                    <p class="lg:text-[25px] md:text-[22px] text-[20px] font-thin duration-300">Level up your interview practice.</p>
+                    <button data-action="login-option" class="text-[#FAFAFA] bg-[#1b1f26] lg:text-[22px] md:text-[18px] text-[16px] rounded-[4px]
+                        px-[20px] py-[7px] hover:shadow-2xl hover:bg-[#2269D4] hover:text-[#FAFAFA] duration-300"
+                        id="login-option-btn">Start Mockup Interview
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="loginoption__modal fixed inset-0 flex items-center justify-center hidden duration-300" id="login-option-modal">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+            <h2 class="text-xl font-bold mb-4">Login Option</h2>
+            <form id="login-option-form" class="flex flex-col gap-[20px]">
+                <button data-action="login" id="login" class="text-[#FAFAFA] bg-[#1b1f26] lg:text-[20px] md:text-[18px] text-[16px] rounded-[4px]
+                    px-[20px] py-[7px] hover:shadow-2xl hover:bg-[#2269D4] hover:text-[#FAFAFA] duration-300">Login to your account
+                </button>
+                <button data-action="guest-interview" id="guest-interview" class="text-[#FAFAFA] bg-[#1b1f26] lg:text-[20px] md:text-[18px] text-[16px] rounded-[4px]
+                    px-[20px] py-[7px] hover:shadow-2xl hover:bg-[#2269D4] hover:text-[#FAFAFA] duration-300">Proceed to interview as guest</button>
+            </form>
+            <button data-action="cls-lgn-opt-mdl-btn" id="cls-lgn-opt-mdl-btn" class="mt-4 text-[#1b1f26] hover:text-[#2269D4] duration-300">Cancel</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>MockWise.AI</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/output.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .speaker-active {
+            box-shadow: 0 0 15px 5px rgba(59, 130, 246, 0.5);
+            transition: box-shadow 0.3s ease;
+        }
+    </style>
+</head>
+<body id="body" class="font-afacad bg-[#a4bacb] flex flex-col h-screen relative">
+    <header class="flex justify-center lg:hidden">
+        <div class="flex justify-between w-full content-center h-[55px] lg:h-[100px] md:h-[77.5px] px-[15px] duration-500">
+            <nav class="header__wrapper flex justify-between items-center" id="header">
+                <div class="header__logo lg:hidden">
+                    <a href="{{ url_for('index') }}" class="flex lg:gap-[10px] md:gap-[11px] sm:gap-[9px] gap-[8px] items-center duration-500">
+                        <img src="{{ url_for('static', filename='/images/Logo.png') }}" alt="logo" class="w-[42px] md:w-[50px] lg:w-[52px] duration-300">
+                    </a>    
+                </div>
+            </nav>
+
+            <div class="lg:hidden flex items-center">
+                <button id="burger-button" class="py-2 rounded-md focus:outline-none ">
+                    <span class="block w-6 h-[3px] rounded-full bg-[#393a3b] mb-1"></span>
+                    <span class="block w-6 h-[3px] rounded-full bg-[#393a3b] mb-1"></span>
+                    <span class="block w-6 h-[3px] rounded-full bg-[#393a3b] mb-1"></span>
+                </button>
+            </div>
+        </div>
+    </header> 
+
+    <div id="sidebar" class="sidebar fixed w-[230px] bg-[#E8E8E8] text-[15px] right-0 top-0 h-full translate-x-full lg:bg-transparent lg:translate-x-0 lg:duration-0 lg:left-0 lg:transition-none
+        lg: flex flex-col p-3 text-[#393a3b] md:text-[16px] lg:text-[18px] ease-in-out duration-300 z-40">
+        <div class="header__logo hidden lg:!flex justify-center h-[55px] px-[15px] duration-500">
+            <a href="{{ url_for('index') }}" class="flex lg:gap-[10px] md:gap-[11px] sm:gap-[9px] gap-[8px] items-center duration-500">
+                <img src="{{ url_for('static', filename='/images/Logo.png') }}" alt="logo" class="w-[42px] md:w-[50px] lg:w-[52px] duration-300">
+            </a>
+        </div>
+        <hr class="my-4 hidden lg:!block">
+        <div class="lg:hidden">
+            <button id="arrow-button">
+                <span class="block w-[13px] rounded-full h-[3px] bg-[#393a3b] rotate-35 translate-y-[-6px] translate-x-[0px]"></span>
+                <span class="block w-[13px] rounded-full h-[3px] bg-[#393a3b] rotate-145 translate-y-[-2px] translate-x-[0px]"></span>
+            </button>
+        </div>
+        <div class="menu pt-[25px] lg:pt-0">
+            <a href="{{ url_for('interview') }}" class="block p-1 mb-2 flex items-center cursor-pointer rounded border-transparent hover:bg-[rgba(216,220,223,0.5)]">
+                <i class="bi bi-person-workspace mr-2 ml-3"></i> Generate Interview
+            </a>
+            <a href="{{ url_for('progress') }}" class="block p-1 mb-2 flex items-center cursor-pointer rounded border-transparent hover:bg-[rgba(216,220,223,0.5)]">
+                <i class="bi bi-graph-up-arrow mr-2 ml-3"></i> Progress Tracking
+            </a>
+            <a href="{{ url_for('settings') }}" class="block p-1 mb-2 flex items-center cursor-pointer rounded border-transparent hover:bg-[rgba(216,220,223,0.5)]">
+                <i class="bi bi-gear mr-2 ml-3"></i> Settings
+            </a>
+        </div>
+        <div class="mt-auto mb-[20px]">
+            <hr class="my-4">
+            <a href="{{ url_for('logout') }}" class="block p-1 flex items-center cursor-pointer rounded hover:bg-[rgba(216,220,223,0.5)]" onclick="return confirmLogout()">
+                <i class="bi bi-box-arrow-right mr-3"></i>
+                Log Out
+            </a>
+        </div>
+    </div>
+
+    <div id="interview__contents" class="interview__contents flex flex-col gap-0 lg:gap-2 bg-[#E8E8E8] mt-[20px] mb-[20px] ml-[20px] mr-[20px] lg:ml-[270px] lg:h-full p-5 rounded-[15px]">
+        {% if user_data.username == "Guest" %}
+            <h1 class="text-xl p-4">Welcome to your interview!</h1>
+        {% else %}
+            <h1 class="text-xl p-4">Welcome back, {{ user_data.first_name or user_data.username }}!</h1>
+        {% endif %}        
+        <div class="mw_intvw_conference flex flex-col items-center justify-center gap-[20px] mt-2 mb-2 lg:mt-20 lg:flex-row">
+            <div id="mw_box" class="mw_cam_view flex flex-col relative bg-gray-800 w-[400px] h-[300px] rounded-[12px]">
+                <div class="mw__image h-full rounded-[12px]" id="mw__avatar">
+                    <img src="" class="h-full w-full object-cover rounded-[12px]">
+                </div>
+                <div class="mw_cam_view_ID absolute bottom-0">
+                    <p class="bg-[rgba(0,0,0,0.3)] px-[6px] rounded-[5px] flex items-center justify-center mb-[5px] ml-[5px] text-amber-50">MockWise</p>
+                </div>
+            </div>
+            <div id="user_box" class="user_cam_view flex flex-col relative bg-gray-800 w-[400px] h-[300px] rounded-[12px]">
+                <div class="user__camera h-full rounded-[12px]">
+                    <video class="rounded-[12px]"></video>
+                </div>
+                <div class="user_cam_view_ID absolute bottom-0">                 
+                    {% if user_data %}
+                        <p id="user_name" class="bg-[rgba(0,0,0,0.3)] px-[6px] rounded-[5px] flex items-center justify-center mb-[5px] ml-[5px] text-amber-50">{{ user_data.first_name or user_data.username }}</p>
+                    {% else %}
+                        <p id="user_name" class="bg-[rgba(0,0,0,0.3)] px-[6px] rounded-[5px] flex items-center justify-center mb-[5px] ml-[5px] text-amber-50">Guest User</p>
+                    {% endif %}
+                </div>
+                <div class="cam_toggle absolute bottom-0.5 right-1">
+                    <button id="cam-toggle" data-action="cam-toggle" class="rounded-[20px] py-[3px] px-[3px] border-[1px] border-gray-800 hover:border-white duration-300">
+                        <img src="{{ url_for('static', filename='images/cam-slash.svg') }}" alt="Show Password" class="w-[18px]">
+                    </button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- <div class="interview_controls bg-white rounded-[20px] max-w-[570px] lg:w-[570px] h-[50px] flex flex-row flex-wrap justify-center items-center gap-2.5 mt-[30px] lg:mt-[210px] mx-auto"> -->
+        <div class="interview_controls bg-white rounded-full md:rounded-[20px] max-w-[570px] lg:w-[570px] h-[100px] md:h-[50px] flex flex-row flex-wrap justify-center items-center gap-2.5 mt-[30px] px-[40px] md:mb-[2px] lg:mt-[80px] lg:mb-[10px] 
+            mx-auto">
+            <select id="interview_duration" class="interview_duration">
+                <option value="normal">Normal</option>
+                <option value="extended">Extended</option>
+            </select>
+            <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}">
+            <select id="industry-select" class="industry-selector">
+                <option value="accountancy">Accountancy</option>
+                <option value="business_administration">Business Administration</option>
+                <option value="civil_engineering">Civil Engineering</option>
+                <option value="computer_science">Computer Science</option>
+                <option value="elementary_education">Elementary Education</option>
+                <option value="hospitality_management">Hospitality Management</option>
+                <option value="industrial_engineering">Industrial Engineering</option>
+                <option value="information_technology">Information Technology</option>
+                <option value="nursing">Nursing</option>
+                <option value="psychology">Psychology</option>
+                <option value="secondary_education">Secondary Education</option>
+                <option value="tourism_management">Tourism Management</option>
+            </select>
+            
+            <div id="error-message" class="hidden error-message"></div>
+            <div class="flex items-center justify-center gap-2.5">
+                <button type="submit" data-action="start-intvw" class="bg-orange-600 rounded-[20px] py-[5px] px-[12px] text-blue-50 border-[1px] border-white hover:bg-[#FAFAFA] hover:border-orange-600 hover:text-gray-800 duration-300">Start</button>
+                <button id="end-interview" class="bg-orange-600 rounded-[20px] py-[5px] px-[12px] text-blue-50 border-[1px] border-white hover:bg-[#FAFAFA] hover:border-orange-600 hover:text-gray-800 duration-300">End Interview</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="guest-modal" class="{{ 'hidden' if not show_guest_modal else 'fixed inset-0 flex items-center justify-center bg-[#E8E8E8] bg-opacity-50' }}">
+        <div class="bg-white p-6 rounded-lg w-96">
+            <h2 class="text-xl font-bold mb-4">Guest Interview</h2>
+            <form id="guest-form" class="flex flex-col space-y-4 justify-center">
+                <input type="text" name="guest_name" placeholder="Your Name" class="w-full p-2 border rounded" required>
+                <div class="guest_industry_select w-full border rounded">
+                    <select name="guest_industry" class="w-full p-2 border-r-white border-r-[11px] rounded" required>
+                        <option value="" disabled selected>Select Industry</option>
+                        <option value="accountancy">Accountancy</option>
+                        <option value="business_administration">Business Administration</option>
+                        <option value="civil_engineering">Civil Engineering</option>
+                        <option value="computer_science">Computer Science</option>
+                        <option value="elementary_education">Elementary Education</option>
+                        <option value="hospitality_management">Hospitality Management</option>
+                        <option value="industrial_engineering">Industrial Engineering</option>
+                        <option value="information_technology">Information Technology</option>
+                        <option value="nursing">Nursing</option>
+                        <option value="psychology">Psychology</option>
+                        <option value="secondary_education">Secondary Education</option>
+                        <option value="tourism_management">Tourism Management</option>
+                    </select>
+                </div>
+                <button type="submit" class="text-[#FAFAFA] bg-[#1b1f26] lg:text-[20px] md:text-[18px] text-[16px] rounded-[4px]
+                px-[20px] py-[7px] hover:shadow-2xl hover:bg-[#2269D4] hover:text-[#FAFAFA] duration-300">Proceed</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Guest Message that appears after interview ends for guest users -->
+    <div id="guestMessage" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div class="bg-white p-8 rounded-lg w-96 max-w-md">
+            <h2 class="text-2xl font-bold mb-4">Thank You!</h2>
+            <p class="mb-6">Your interview session has concluded. To save your progress and see your performance metrics, consider creating an account.</p>
+            <div class="flex flex-col gap-3">
+                <a href="{{ url_for('signup') }}" class="bg-blue-600 text-white px-4 py-2 rounded text-center hover:bg-blue-700">Create an Account</a>
+                <a href="{{ url_for('index') }}" class="bg-gray-300 text-gray-800 px-4 py-2 rounded text-center hover:bg-gray-400">Return to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .processing {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .mic-active {
+            color: red !important;
+        }
+        .error-message {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px;
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+            border-radius: 4px;
+            max-width: 300px;
+            z-index: 1000;
+            display: none; /* Starts hidden */
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <script>
+        // Pass Flask session data to JavaScript
+        window.appConfig = JSON.parse('{{ app_config | tojson | safe }}');
+        
+        // Explicitly set this flag for use in the script
+        window.userIsLoggedIn = window.appConfig.isLoggedIn;
+     
+        // Hide the interview interface
+        document.getElementById('sidebar').classList.add('hidden');
+        document.getElementById('interview__contents').classList.add('hidden');
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Clear any guest data if the user is actually logged in
+            if (window.userIsLoggedIn) {
+                sessionStorage.removeItem('is_guest');
+                console.log("User is logged in, cleared guest data");
+
+                // Show the interview interface
+                document.getElementById('sidebar').classList.remove('hidden');
+                document.getElementById('interview__contents').classList.remove('hidden');
+            }
+            
+            const guestForm = document.getElementById('guest-form');
+            if (guestForm) {
+                guestForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    // Show the interview interface
+                    document.getElementById('sidebar').classList.remove('hidden');
+                    document.getElementById('interview__contents').classList.remove('hidden');
+                    
+                    const formData = new FormData(this);
+                    const response = await fetch('/set_guest_data', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRFToken': document.querySelector('meta[name="csrf-token"]').content
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        // Hide the modal
+                        document.getElementById('guest-modal').classList.add('hidden');
+                        
+                        // Update the username and industry display
+                        const guestName = formData.get('guest_name');
+                        const guestIndustry = formData.get('guest_industry');
+                        const guestIndustryDisplay = document.getElementById('industry-select');
+                        const userDisplay = document.getElementById('user_name');
+                        if (userDisplay) {
+                            userDisplay.textContent = guestName;
+                            guestIndustryDisplay.value = guestIndustry;
+                        }
+                    } else {
+                        console.error('Failed to set guest data');
+                    }
+                });
+            }
+        });
+
+        const burgerButton = document.getElementById('burger-button');
+        const sidebarMenu = document.getElementById('sidebar');
+        const arrowButton = document.getElementById('arrow-button');
+
+        // Toggle sidebar visibility
+        function toggleSidebar() {
+            sidebar.classList.toggle('translate-x-full');
+        }
+
+        burgerButton.addEventListener('click', toggleSidebar);
+        arrowButton.addEventListener('click', toggleSidebar);
+    </script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
+

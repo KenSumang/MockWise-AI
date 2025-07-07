@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MockWise.AI</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/output.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="font-afacad bg-[#E8E8E8] flex flex-col xl:h-full h-lvh">
+    <header class="flex justify-center">
+        <div class="container content-center text-[#242424] h-[55px] lg:h-[100px] md:h-[77.5px] px-[15px] max-w-[1230px] duration-500">
+            <nav class="header__wrapper flex justify-between items-center" id="header">
+                <div class="header__logo">
+                    <a href="/" class="flex lg:gap-[10px] md:gap-[11px] sm:gap-[9px] gap-[8px] items-center duration-500">
+                        <img src="{{ url_for('static', filename='/images/Logo.png') }}" alt="logo" class="w-[42px] md:w-[50px] lg:w-[52px] duration-300">
+                        <h2 class="text-[22px] lg:text-[30px] md:text-[25px] hidden md:block duration-500">MockWise AI</h2>
+                    </a>    
+                </div>
+
+                <div class="login__signup flex lg:gap-[26px] md:gap-[16px] gap-[8px] lg:text-[20px]
+                    md:text-[18px] text-[17px] duration-500  ">   
+                    {% if user_data %}
+                        <a href="#">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('login') }}">Login</a>  
+                        <a href="{{ url_for('signup') }}">Sign Up</a>
+                    {% endif %}
+                </div>
+            </nav>
+        </div>
+    </header>   
+
+    <section id="terms__conditions" class="terms__conditions flex items-center justify-center">
+        <div class="container flex items-baseline justify-center mt-[45px] mb-[130px] lg:max-w-[800px] md:max-w-[450px] max-w-[360px]">
+            <div class="terms__conditions__wrapper">
+                <div class="terms__conditions__contents flex flex-col justify-center text-[#242424] gap-[16px] md:gap-[20px] lg:gap-[24px]">
+                    <div class="terms__conditions__header w-full flex flex-col justify-center leading-[44px] lg:leading-[55px] items-center duration-300">
+                        <h1 class="lg:text-[56px] md:text-[52] text-[40px] text-center duration-300">
+                            TERMS AND CONDITIONS FOR MOCKWISE AI
+                        </h1>
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">Last Updated: May 6,2025</p>
+                    </div>
+
+                    <div class="acceptance_of_terms flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            1. ACCEPTANCE OF TERMS
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            By accessing or using MockWise AI, you agree to these Terms and Conditions. If you disagree, do not use the Platform.
+                        </p>
+                    </div>
+
+                    <div class="eligibility flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            2. ELIGIBILITY
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            You must:
+                        </p>
+
+                        <ul class="list-disc px-9 lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            <li>
+                                Be at least <span class="font-bold">13 years old</span> (or the age of majority in your jurisdiction).
+                            </li>
+                            <li>
+                                Provide accurate information during registration.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="user_responsibilities flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            3. USER RESPONSIBILITIES
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            You agree to:
+                        </p>
+                        <ul class="list-disc px-9 lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            <li>
+                                Use the Platform <span class="font-bold">only for lawful purposes</span> (no harassment, fraud, or misuse).
+                            </li>
+                            <li>
+                                <span class="font-bold">Not share</span> your account credentials.
+                            </li>
+                            <li>
+                                <span class="font-bold">Not reverse-engineer</span> or disrupt the Platform’s functionality.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="intellectual_property flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            4. INTELLECTUAL PROPERTY
+                        </h1>
+                        <ul class="list-disc px-9 lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            <li>
+                                All content (questions, feedback systems, designs) is owned by <span class="font-bold">MockWise AI</span> or its licensors.
+                            </li>
+                            <li>
+                                You retain rights to your <span class="font-bold">interview responses</span> but grant us a license to process them for feedback.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="privacy flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            5. PRIVACY
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            Your data is handled per our <a href="{{ url_for('privacy_policy') }}"><span class="text-[#2269D4]">Privacy Policy</span></a>.
+                        </p>
+                    </div>
+
+                    <div class="disclaimers flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            6. DISCLAIMERS
+                        </h1>
+                        <ul class="list-disc px-9 lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            <li>
+                                The Platform provides practice simulations only; we do not guarantee job placement.
+                            </li>
+                            <li>
+                                Services are offered "<span class="font-bold">as-is</span>" without warranties of accuracy or uptime.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="limitation_of_liability flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            7. LIMITATION OF LIABILITY
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            MockWise AI is <span class="font-bold">not liable</span> for:
+                        </p>
+                        <ul class="list-disc px-9 lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            <li>
+                                Indirect damages (e.g., lost job opportunities).
+                            </li>
+                            <li>
+                                Technical issues beyond our control (e.g., internet outages).
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="termination flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            8. TERMINATION
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            We may suspend or terminate your account for <span class="font-bold">violations of these Terms</span>.
+                        </p>
+                    </div>
+
+                    <div class="change_to_terms flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            9. CHANGE TO TERMS
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            We may update these Terms periodically. Continued use constitutes acceptance.
+                        </p>
+                    </div>
+
+                    <div class="governing_law flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            10. GOVERNING LAW
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            These Terms are governed by the laws of Philippines.
+                        </p>
+                    </div>
+
+                    <div class="contact flex flex-col justify-center items-baseline">
+                        <h1 class="lg:text-[34px] md:text-[30px] text-[26px] text-center leading-[44px] lg:leading-[55px] duration-300">
+                            11. CONTACT
+                        </h1>
+    
+                        <p class="lg:text-[22px] md:text-[20px] text-[18px] font-thin duration-300">
+                            Questions? Email: support@mockwiseai.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="login__bg fixed flex justify-center h-lvh w-full z-[-1]">
+        <img src="{{ url_for('static', filename='images/Logo.png') }}" alt="bgimage" class="h-full max-w-[30%] object-contain opacity-[15%]">
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
